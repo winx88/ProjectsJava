@@ -48,6 +48,11 @@ public class MainWindow extends JFrame {
 	private ActionListener click = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			/**
+			 * Check if perceptrons is null
+			 */
+			if(perceptrons == null)
+				return;
 			int index = check();
 			String name = patterns.get(index).getName();
 			System.out.println("Detected pattern #" + index + " " + name);
@@ -201,7 +206,9 @@ public class MainWindow extends JFrame {
 		for (int i = 0; i < 5 * 8; i++) {
 			weights[i] = 0.5;
 		}
-
+		/**
+		 * Create list of perceptrons 
+		 */
 		perceptrons = new ArrayList<Perceptron>();
 		for (int p = 0; p < patterns.getSize(); p++) {
 			Perceptron perceptron = new BasicPerceptron();
@@ -223,6 +230,9 @@ public class MainWindow extends JFrame {
 	private double learn(Perceptron p, PixelPattern<Boolean> pattern, double oldScore) {
 		double[] oldWeights = p.getWeights();
 		
+		/**
+		 * 33% probability of modify in pattern
+		 */
 		PixelPattern<Boolean> modifiedPattern = pattern.copy();
 		if(r.nextInt(100) < 33) {
 			int index = r.nextInt(modifiedPattern.getPixels().size());
@@ -260,18 +270,15 @@ public class MainWindow extends JFrame {
 
 	public int check() {
 		PixelPattern<Boolean> pattern = patternPresenter.getPattern();
-		System.out.println("*******************");
-		System.out.println("List perceptrons"+perceptrons.size());
 		Perceptron perceptron = perceptrons.get(0);
 		
 		double score = eval(perceptron, pattern);
 		int index = 0;
-		System.out.println("Eval " + index + " -> " + score);
+		System.out.println("No. " + index + " -> " + score);
 		for (int i = 1; i < perceptrons.size(); i++) {
 			
 			double newScore = eval(perceptrons.get(i), pattern);
-			System.out.println("Perceptron: "+i+" "+newScore);
-			System.out.println("Eval " + i + " -> " + newScore);
+			System.out.println("No. " + i + " -> " + newScore);
 			if (newScore > score) {
 				score = newScore;
 				index = i;

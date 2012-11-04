@@ -36,6 +36,10 @@ public class BasicPerceptron implements Perceptron {
 		double sum = 0;
 		for (int i = 0; i < in.length; i++) {
 			sum += in[i] * weights[i];
+			/**
+			 * Display input * weights 
+			 */
+			System.out.println("No."+i+" input*wagi = "+in[i] * weights[i]);
 		}
 		return sum;
 	}
