@@ -204,6 +204,7 @@ public class MainWindow extends JFrame {
 
 		double[] weights = new double[5 * 8];
 		for (int i = 0; i < 5 * 8; i++) {
+			//weights[i] = 0.5;
 			weights[i] = 0.5;
 		}
 		/**
@@ -232,9 +233,10 @@ public class MainWindow extends JFrame {
 		
 		/**
 		 * 33% probability of modify in pattern
+		 * 10%
 		 */
 		PixelPattern<Boolean> modifiedPattern = pattern.copy();
-		if(r.nextInt(100) < 33) {
+		if(r.nextInt(100) < 10) {
 			int index = r.nextInt(modifiedPattern.getPixels().size());
 			Boolean pixel = modifiedPattern.getPixels().get(index);
 			modifiedPattern.getPixels().set(index, !pixel);
@@ -244,7 +246,6 @@ public class MainWindow extends JFrame {
 		for (int i = 0; i < modifiedPattern.getPixels().size(); i++) {
 			newWeights[i] = r.nextDouble();
 		}
-
 		p.setWeights(newWeights);
 		double newScore = eval(p, modifiedPattern);
 		if (newScore > oldScore) {
