@@ -25,8 +25,8 @@ public class RobotArm {
 		armPoints[1] = new Point((int) (-sinDegree(angles.x + angles.y) * ARM_LENGTH) + armPoints[0].x,
 				(int) (cosDegree(angles.x + angles.y) * ARM_LENGTH) + armPoints[0].y);
 
-//		System.out.println("Angles to ArmPoints: A(" + angles.x + "," + angles.y + ") -> P1(" + armPoints[0].x + ","
-//				+ armPoints[0].y + ") P2(" + armPoints[1].x + "," + armPoints[1].y + ")");
+		/*System.out.println("Angles to ArmPoints: A(" + angles.x + "," + angles.y + ") -> P1(" + armPoints[0].x + ","
+				+ armPoints[0].y + ") P2(" + armPoints[1].x + "," + armPoints[1].y + ")");*/
 		return armPoints;
 	}
 
@@ -49,7 +49,7 @@ public class RobotArm {
 		p.x = x + ATTACH_POINT.x;
 		p.y = y + ATTACH_POINT.y;
 
-//		System.out.println("Random Point: " + alpha + " -> P(" + x + "," + y + ") -> P(" + p.x + "," + p.y + ")");
+		/*System.out.println("Random Point: " + alpha + " -> P(" + x + "," + y + ") -> P(" + p.x + "," + p.y + ")");*/
 		return p;
 	}
 
@@ -118,7 +118,8 @@ public class RobotArm {
 		p.x = (int) a;
 		p.y = (int) b;
 
-//		System.out.println("Point to Angles: P(" + target.x + "," + target.y + ") -> A(" + p.x + "," + p.y + ")");
+		System.out.println("Point to Angles: P(" + target.x + "," + target.y + ") -> A(" + p.x + "," + p.y + ")");
+		/*System.out.print("{" + target.x + "," + target.y + "},{" + p.x + "," + p.y + "},");*/
 		return p;
 	}
 

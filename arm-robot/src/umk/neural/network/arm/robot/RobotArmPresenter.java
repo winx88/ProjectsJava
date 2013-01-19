@@ -15,7 +15,6 @@ public class RobotArmPresenter extends JComponent {
 	private static final long serialVersionUID = 1L;
 
 	private Point point = new Point(100, 100);
-
 	private Point angles = new Point(120, 120);
 
 	public RobotArmPresenter() {
@@ -40,7 +39,7 @@ public class RobotArmPresenter extends JComponent {
 
 			drawPoint(gc, RobotArm.ATTACH_POINT.x, RobotArm.ATTACH_POINT.y, "P0");
 			drawPoint(gc, points[0].x, points[0].y, "P1");
-			drawPoint(gc, points[1].x, points[1].y, "P2");
+			drawPoint(gc, points[1].x+6, points[1].y-4, "P2");
 		}
 
 		if (point != null) {
@@ -68,6 +67,9 @@ public class RobotArmPresenter extends JComponent {
 	private MouseAdapter mouseHandler = new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			/**
+			 * wybieramy punkt koncowy obliczamy kat
+			 */
 			point = e.getPoint();
 			point.y = getHeight() - point.y;
 			//angles = RobotArm.calcAngles(point);
@@ -75,10 +77,7 @@ public class RobotArmPresenter extends JComponent {
 			repaint();
 		}
 		
-		@Override
-		public void mouseMoved(MouseEvent e) {
-			mouseClicked(e);
-		}
+		
 	};
 
 	public void setPoint(Point point) {

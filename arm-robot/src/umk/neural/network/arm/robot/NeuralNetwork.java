@@ -51,6 +51,9 @@ public class NeuralNetwork {
 
 	public void startLearning(int iterations) {
 		for (int i = 0; i < iterations; i++) {
+			/**
+			 * wynieramy losowy wynik i obliczamy kat
+			 */
 			Point t = RobotArm.randomPoint();
 			Point angles = RobotArm.calcAngles(t);
 
@@ -63,12 +66,12 @@ public class NeuralNetwork {
 	private void learn(double input[], double output[]) {
 		in.setValues(input);
 		in.getNext().calcForward(in.getValues());
-//		System.out.println("IN: P(" + in.getValues()[0] + "," + in.getValues()[1] + ") OUT: P(" + out.getValues()[0]
-//				+ "," + out.getValues()[1] + ")");
+/*	System.out.println("IN: P(" + in.getValues()[0] + "," + in.getValues()[1] + ") OUT: P(" + out.getValues()[0]
+				+ "," + out.getValues()[1] + ")");*/
 		double diffs[] = { out.getValues()[0] - output[0], out.getValues()[1] - output[1] };
-//		System.out.println("Expected: P(" + output[0] + "," + output[1] + ") Actual: P(" + out.getValues()[0] + ","
-//				+ out.getValues()[1] + ")");
-//		System.out.println("Error: P(" + diffs[0] + "," + diffs[1] + ")");
+	/*	System.out.println("Expected: P(" + output[0] + "," + output[1] + ") Actual: P(" + out.getValues()[0] + ","
+				+ out.getValues()[1] + ")");
+		System.out.println("Error: P(" + diffs[0] + "," + diffs[1] + ")");*/
 		out.calcBackward(diffs);
 	}
 
